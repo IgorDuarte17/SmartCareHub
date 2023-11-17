@@ -14,7 +14,7 @@ class AddressFactory extends Factory
     public function definition()
     {
         return [
-            'zip_code' => $this->faker->numerify('########'),
+            'zipcode' => $this->faker->numerify('########'),
             'street' => $this->faker->streetName,
             'number' => $this->faker->numerify('#####'),
             'complement' => $this->faker->secondaryAddress,

@@ -35,15 +35,15 @@ class PatientRequest extends FormRequest
             'full_name' => 'required|string',
             'mother_full_name' => 'required|string',
             'birthday' => 'required|string',
-            'document.cpf' => 'required|string|max:11',
-            'document.cns' => 'required|string',
+            'cpf' => 'required|string|max:11',
+            'cns' => 'required|string',
             'address.zipcode' => 'required|string',
-            'adrress.street' => 'required|string',
-            'adrress.number' => 'required|string',
-            'adrress.complement' => 'required|string',
-            'adrress.district' => 'required|string',
-            'adrress.city' => 'required|string',
-            'adrress.state' => 'required|string',
+            'address.street' => 'required|string',
+            'address.number' => 'required|string',
+            'address.complement' => 'required|string',
+            'address.district' => 'required|string',
+            'address.city' => 'required|string',
+            'address.state' => 'required|string',
         ];
     }
 
