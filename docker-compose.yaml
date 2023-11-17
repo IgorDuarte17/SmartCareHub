@@ -1,0 +1,48 @@
+version: '3.7'
+services:
+
+  php-fpm:
+    build:
+      context: .
+      dockerfile: ./.setup/php/Dockerfile
+    volumes:
+      - .:/var/www/
+    depends_on:
+      - mysql
+    networks:
+      - smart
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8000:80
+    volumes:
+      - .:/var/www/
+      - ./.setup/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php-fpm
+    networks:
+      - smart
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./.setup/mysql/db_data:/var/lib/mysql
+    networks:
+      - smart
+
+  redis:
+    image: redis:latest
+    networks:
+      - smart
+
+networks:
+  smart:
+    driver: bridge

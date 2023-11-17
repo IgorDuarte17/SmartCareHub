@@ -1,0 +1,19 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Smart Care Hub",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/exemplo": {
+            "get": {
+                "summary": "Resumo da operação GET",
+                "responses": {
+                    "200": {
+                        "description": "Resposta bem-sucedida"
+                    }
+                }
+            }
+        }
+    }
+}

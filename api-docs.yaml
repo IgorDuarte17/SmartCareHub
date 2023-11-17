@@ -1,0 +1,18 @@
+swagger: "2.0"
+info:
+  title: "Smart Care Hub"
+  description: "Gerenciamento de Pacientes"
+  version: 1.0.0
+host: "https://localhost"
+basePath: /api/
+schemes:
+  - http
+definitions:
+  response:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
