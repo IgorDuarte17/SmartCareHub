@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Patient;
 
 use App\Models\Patient;
 use App\Http\Requests\PatientRequest;
 use App\Repositories\AddressRepository;
 use App\Repositories\PatientRepository;
-use App\Services\Contracts\PatientServiceContract;
+use App\Services\Patient\Contracts\PatientServiceContract;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;

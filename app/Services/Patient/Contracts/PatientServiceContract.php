@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Contracts;
+namespace App\Services\Patient\Contracts;
 
 use App\Models\Patient;
 use App\Http\Requests\PatientRequest;

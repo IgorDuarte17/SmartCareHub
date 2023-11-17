@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PatientRequest;
 use App\Http\Resources\PatientResource;
-use App\Services\Contracts\PatientServiceContract;
+use App\Services\Patient\Contracts\PatientServiceContract;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Illuminate\Validation\ValidationException;
 

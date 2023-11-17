@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Services\Contracts\PatientServiceContract;
-use App\Services\PatientService;
+use App\Services\Patient\Contracts\PatientServiceContract;
+use App\Services\Patient\PatientService;
 
 class AppServiceProvider extends ServiceProvider
 {
