@@ -22,13 +22,14 @@ class PatientResource extends JsonResource
             'cpf' => $this->cpf,
             'cns' => $this->cns,
             'photo' => $this->photo ?? null,
-            'zipcode' => $this->zipcode,
-            'street' => $this->street,
-            'number' => $this->number,
-            'complement' => $this->complement,
-            'district' => $this->district,
-            'city' => $this->city,
-            'state' => $this->state,
+            'address_id' => $this->address_id ?? null,
+            'zipcode' => $this->address->zipcode,
+            'street' => $this->address->street,
+            'number' => $this->address->number,
+            'complement' => $this->address->complement,
+            'district' => $this->address->district,
+            'city' => $this->address->city,
+            'state' => $this->address->state,
         ];
     }
 }

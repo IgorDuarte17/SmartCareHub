@@ -4,16 +4,18 @@ namespace App\Services;
 
 use App\Models\Patient;
 use App\Http\Requests\PatientRequest;
+use App\Repositories\AddressRepository;
 use App\Repositories\PatientRepository;
+use App\Services\Contracts\PatientServiceContract;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Pagination\Paginator;
-use App\Services\Contracts\PatientServiceContract;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class PatientService implements PatientServiceContract
 {
     public function __construct(
-        private PatientRepository $repository
+        private PatientRepository $repository,
+        private AddressRepository $addressRepository
     ) {}
 
     /**
@@ -62,11 +64,17 @@ class PatientService implements PatientServiceContract
      * Create a new patient.
      *
      * @param PatientRequest $request
-     * @return \Patient
+     * @return Patient
      */
     public function create(PatientRequest $request): Patient
     {
-        return $this->repository->create($request->all());
+        $addressData = $request->input('address');
+        $address = $this->addressRepository->create($addressData);
+
+        $requestData = $request->except('address');
+        $requestData['address_id'] = $address->id;
+
+        return $this->repository->create($requestData);
     }
 
     /**
@@ -78,7 +86,13 @@ class PatientService implements PatientServiceContract
      */
     public function update(int $id, PatientRequest $request): Patient
     {
-        return $this->repository->update($id, $request->all());
+        $addressData = $request->input('address');
+        $address = $this->addressRepository->update($request->address_id, $addressData);
+
+        $requestData = $request->except('address');
+        $requestData['address_id'] = $address->id;
+
+        return $this->repository->update($id, $requestData);
     }
 
     /**

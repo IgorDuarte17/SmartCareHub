@@ -30,9 +30,9 @@ class PatientRepository
         return $this->model->create($data);
     }
 
-    public function update($id, array $data)
+    public function update(int $id, array $data)
     {
-        $patient = $this->find($id);
+        $patient = $this->model->find($id);
 
         if ($patient) {
             $patient->update($data);
