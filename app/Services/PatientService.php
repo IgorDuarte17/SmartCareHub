@@ -68,6 +68,14 @@ class PatientService implements PatientServiceContract
      */
     public function create(PatientRequest $request): Patient
     {
+        if (!validate_cpf($request->cpf)) {
+            throw new \InvalidArgumentException('O número CPF informado é inválido.');
+        }
+
+        if (!$this->validateCNS($request->cns)) {
+            throw new \InvalidArgumentException('O número CNS informado é inválido.');
+        }
+
         $addressData = $request->input('address');
         $address = $this->addressRepository->create($addressData);
 
@@ -104,5 +112,14 @@ class PatientService implements PatientServiceContract
     public function delete(int $id): bool
     {
         return $this->repository->delete($id);
+    }
+
+    private function validateCNS($cns)
+    {
+        if (in_array($cns[0], ['1', '2'])) {
+            return validate_cns($cns);
+        }
+
+        return validate_cns_prov($cns);
     }
 }

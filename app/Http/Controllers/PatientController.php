@@ -51,9 +51,9 @@ class PatientController extends Controller
 
     /**
      * @param PatientRequest $request
-     * @return PatientResource
+     * @return PatientResource|JsonResponse
      */
-    public function store(PatientRequest $request): PatientResource
+    public function store(PatientRequest $request): PatientResource|JsonResponse
     {
         try {
             $patient = $this->service->create($request);
@@ -63,6 +63,9 @@ class PatientController extends Controller
          $errors = $e->validator->errors()->toArray();
 
          return response()->json(['message' => 'Erro de validação', 'errors' => $errors], 422);
+
+        } catch (\InvalidArgumentException $e) {
+            return response()->json(['message' => $e->getMessage()], 400);
         }
     }
 
