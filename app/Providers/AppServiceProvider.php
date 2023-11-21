@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Services\Patient\Contracts\PatientServiceContract;
 use App\Services\Patient\PatientService;
+use App\Services\Patient\Contracts\PatientServiceContract;
+use App\Services\Integrations\ViaCepService;
+use App\Services\Integrations\Contracts\ViaCepServiceContract;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(PatientServiceContract::class, PatientService::class);
+        $this->app->bind(ViaCepServiceContract::class, ViaCepService::class);
     }
 
     /**
