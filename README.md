@@ -37,25 +37,4 @@ $ docker-compose exec php-fpm php artisan key:generate
 $ docker-compose exec php-fpm php artisan migrate --seed
 $ docker-compose exec php-fpm php artisan storage:link
 ```
-
-#### User
-```
-email: igor@smart.com.br
-password: 1234
-```
-
----
-
-### Documentação
-Documentação através do Swagger, para cada nova rota criada, adicionar ela no arquivo de config do 
-swagger e informar as configurações.
-- https://swagger.io/docs/
-
-Gerar documentação
-```bash
-$ php artisan l5-swagger:generate
-```
-
-Link: http://localhost:8000/api/documentation
-
 ---
